@@ -31,7 +31,7 @@ public class ArticleController {
 		this.userService = userService;
 	}
 	
-	@GetMapping("/")
+	@GetMapping()
 	public String allArticles(Model model) {
 		List<Article> articles = articleService.getArticleList();
 		model.addAttribute("articles", articles);
@@ -77,7 +77,7 @@ public class ArticleController {
 			return "articles/show_form";
 		}
 		articleService.insertArticle(article);
-		return "redirect:/articles/";
+		return "redirect:/articles";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -102,6 +102,6 @@ public class ArticleController {
 			return "articles/show_form";
 		}
 		articleService.updateArticle(article);
-		return "redirect:/articles/";
+		return "redirect:/articles";
 	}
 }

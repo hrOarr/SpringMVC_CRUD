@@ -26,7 +26,7 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@GetMapping("/")
+	@GetMapping()
 	public String allUsers(Model model) {
 		List<User> users = userService.allUsers();
 		model.addAttribute("users", users);
@@ -53,7 +53,7 @@ public class UserController {
 			return "users/show_form";
 		}
 		userService.InsertUser(user);
-		return "redirect:/users/";
+		return "redirect:/users";
 	}
 	
 	@GetMapping("/update/{id}")
@@ -73,12 +73,12 @@ public class UserController {
 			return "users/show_form";
 		}
 		userService.updateUser(user);
-		return "redirect:/users/";
+		return "redirect:/users";
 	}
 	
 	@PostMapping("/delete/{id}")
 	public String deleteUser(@PathVariable("id") int id) {
 		userService.deleteUser(id);
-		return "redirect:/users/";
+		return "redirect:/users";
 	}
 }

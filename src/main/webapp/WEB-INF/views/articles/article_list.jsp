@@ -24,7 +24,7 @@
 				</a>
 			</div>
 			<div class="pl-4">
-				<a href="<%=request.getContextPath()%>/users/">
+				<a href="<%=request.getContextPath()%>/users">
 				  <button class="bg-purple-600 px-2 py-2 hover:bg-purple-700 focus:outline-none text-white rounded-sm">Show Users</button>
 				</a>
 			</div>
