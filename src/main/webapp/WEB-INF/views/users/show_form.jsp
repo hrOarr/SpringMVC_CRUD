@@ -18,30 +18,30 @@
 <body>
    <div class="flex container h-screen bg-blue-300">
     <div class="shadow-lg mt-20 rounded-lg p-8 mb-24 bg-white mx-auto my-auto">
-             
-    	  <form:form action="${pageContext.servletContext.contextPath}/users/update" method="post" modelAttribute="user">
          
-          <div class="relative mb-2">
+    	 <form:form action="${pageContext.servletContext.contextPath}/users/${type}" method="POST" modelAttribute="user">
+    	    
+    	    <div class="relative mb-2">
               <form:input path="name" required="required" placeholder="Enter name" class="py-1 px-3 w-full bg-white rounded border border-gray-300 outline-none "/>
-          </div>
-          <div class="relative mb-2 text-red-500"><c:out value="${username_error}"/></div>
-          
-          <div class="relative mb-2">
+            </div>
+            <div class="relative mb-2 text-red-500"><c:out value="${username_error}"/></div>
+            
+            <div class="relative mb-2">
               <form:input path="email" required="required" placeholder="Enter email" class="py-1 px-3 w-full bg-white rounded border border-gray-300 outline-none "/>
-          </div>
-          <div class="relative mb-2 text-red-500"><c:out value="${email_error}"/></div>
-          
-          <div class="relative mb-2">
+            </div>
+            <div class="relative mb-2 text-red-500"><c:out value="${email_error}"/></div>
+            
+            <div class="relative mb-2">
               <form:input path="country" required="required" placeholder="Enter country" class="py-1 px-3 w-full bg-white rounded border border-gray-300 outline-none "/>
-          </div>
-          
-          <form:input type="hidden" path="id" />
-          
-          <div class="text-center">
-             <button type="submit" class="bg-purple-600 px-2 py-2 hover:bg-purple-700 focus:outline-none text-white rounded-sm">Submit</button>
+            </div>
+            
+            <form:input type="hidden" path="id" />
+           
+           <div class="text-center">
+             <form:button type="submit" class="bg-purple-600 px-2 py-2 hover:bg-purple-700 focus:outline-none text-white rounded-sm">Submit</form:button>
            </div>
          </form:form>
-         
+    	  
     </div>
    </div>
 </body>

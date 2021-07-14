@@ -3,7 +3,6 @@ package com.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dao.ArticleDao;
@@ -12,9 +11,12 @@ import com.model.Article;
 @Service
 public class ArticleServiceImp implements ArticleService {
 	
-	@Autowired
-	@Qualifier(value = "articleDaoImp")
 	private ArticleDao articleDao;
+	
+	@Autowired
+	public ArticleServiceImp(ArticleDao articleDao) {
+		this.articleDao = articleDao;
+	}
 	
 	@Override
 	public int insertArticle(Article article) {
@@ -29,6 +31,11 @@ public class ArticleServiceImp implements ArticleService {
 	@Override
 	public Article getArticle(int id) {
 		return articleDao.getArticle(id);
+	}
+
+	@Override
+	public int updateArticle(Article article) {
+		return articleDao.updateArticle(article);
 	}
 
 }

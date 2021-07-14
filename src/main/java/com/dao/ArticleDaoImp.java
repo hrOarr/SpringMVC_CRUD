@@ -31,7 +31,14 @@ public class ArticleDaoImp implements ArticleDao {
 	public Article getArticle(int id) {
 		String sql = "SELECT articles.id, articles.title, articles.body, users.name AS username FROM articles INNER JOIN users ON articles.user_id=users.id WHERE articles.id=?";
 		Object[] args = {id};
-		return jdbcTemplate.queryForObject(sql, args, new ArticleMapper());
+		return jdbcTemplate.queryForObject(sql, new ArticleMapper(), args);
+	}
+
+	@Override
+	public int updateArticle(Article article) {
+		String sql = "UPDATE articles SET title=?, body=?, user_id=? WHERE id=?";
+		Object[] args = {article.getTitle(), article.getBody(), article.getUser_id(), article.getId()};
+		return jdbcTemplate.update(sql, args);
 	}
 
 }

@@ -3,7 +3,6 @@ package com.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.dao.UserDao;
@@ -12,9 +11,12 @@ import com.model.User;
 @Service
 public class UserServiceImp implements UserService {
 	
-	@Autowired
-	@Qualifier(value = "userDaoImp")
 	private UserDao userDao;
+	
+	@Autowired
+	public UserServiceImp(UserDao userDao) {
+		this.userDao = userDao;
+	}
 	
 	@Override
 	public int InsertUser(User user) {

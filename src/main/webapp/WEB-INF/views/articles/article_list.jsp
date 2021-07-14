@@ -12,18 +12,19 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
 </head>
 <body>
 	<div class="container bg-blue-300">
 		<div
-			class="flex md:flex-row flex-col md:justify-center justify-center pt-20">
+			class="flex md:flex-row justify-center pt-20">
 			<div>
-				<a href="<%=request.getContextPath()%>/articles/new">
+				<a href="<%=request.getContextPath()%>/articles/add">
 				  <button class="bg-blue-600 px-2 py-2 hover:bg-blue-700 focus:outline-none text-white rounded-sm">Add New Article</button>
 				</a>
 			</div>
 			<div class="pl-4">
-				<a href="<%=request.getContextPath()%>/users/user_list">
+				<a href="<%=request.getContextPath()%>/users/">
 				  <button class="bg-purple-600 px-2 py-2 hover:bg-purple-700 focus:outline-none text-white rounded-sm">Show Users</button>
 				</a>
 			</div>
@@ -33,7 +34,7 @@
 		   <c:choose>
 			 <c:when test="${articles!=null}">
 				 <c:forEach var="article" items="${articles}">
-					 <div class="mx-auto py-4 px-8 mt-3 bg-white justify-center shadow-lg rounded-lg">
+					 <div class="py-4 px-8 mt-3 w-full bg-white justify-center shadow-lg rounded-lg">
 						 <h2 class="text-4xl">
 							<a href="<%=request.getContextPath()%>/articles/${article.id}" class="no-underline">${article.title}</a>
 						 </h2>

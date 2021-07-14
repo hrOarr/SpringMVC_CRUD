@@ -25,7 +25,7 @@ public class UserDaoImp implements UserDao {
 	public User selectUser(int id) {
 		String sql = "SELECT * FROM users WHERE id=?";
 		Object[] args = {id};
-		return jdbcTemplate.queryForObject(sql, args, new UserMapper());
+		return jdbcTemplate.queryForObject(sql, new UserMapper(), args);
 	}
 
 	@Override

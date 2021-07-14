@@ -1,27 +1,31 @@
 package com.model;
 
+
 public class Article {
 	private int id;
 	private String title;
 	private String body;
 	private String username;
 	private int user_id;
-	public Article() {
-	}
+	
 	public Article(String title, String body) {
 		this.title = title;
 		this.body = body;
 	}
-	public Article(int id, String username, String title, String body) {
+	public Article(int id, String title, String body, int user_id) {
+		this.id = id;
+		this.title = title;
+		this.body = body;
+		this.user_id = user_id;
+	}
+	public Article(int id, String title, String body, String username, int user_id) {
 		this.id = id;
 		this.title = title;
 		this.body = body;
 		this.username = username;
-	}
-	public Article(String title, String body, int user_id) {
-		this.title = title;
-		this.body = body;
 		this.user_id = user_id;
+	}
+	public Article() {
 	}
 	public int getId() {
 		return id;
@@ -53,5 +57,5 @@ public class Article {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-	
+
 }
