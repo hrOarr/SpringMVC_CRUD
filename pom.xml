@@ -61,8 +61,12 @@
        <version>8.0.12</version>
     </dependency>
     
-    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-    
+    <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+	<dependency>
+	    <groupId>org.hibernate.validator</groupId>
+	    <artifactId>hibernate-validator</artifactId>
+	    <version>6.1.0.Final</version>
+	</dependency>
     
   </dependencies>
   

@@ -11,6 +11,8 @@ public class ArticleValidation {
 		int user_id = article.getUser_id();
 		boolean error = false;
 		
+		String regex = "^[a-zA-Z\\s]*$";
+		
 		if(user_id==0) {
 			error = true;
 			model.addAttribute("user_id_error", "No user selected");
@@ -18,11 +20,13 @@ public class ArticleValidation {
 		
 		if(title.length()<5) {
 			error = true;
-			model.addAttribute("title_error", "Title is too small");
+			if(title.matches(regex))model.addAttribute("title_error", "Title is too small");
+			else model.addAttribute("title_error", "Invalid title");
 		}
 		else if(title.length()>55) {
 			error = true;
-			model.addAttribute("title_error", "Title is too long");
+			if(title.matches(regex))model.addAttribute("title_error", "Title is too long");
+			else model.addAttribute("title_error", "Invalid title");
 		}
 		
 		if(body.length()<10) {

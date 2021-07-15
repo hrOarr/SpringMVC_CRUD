@@ -2,9 +2,12 @@ package com.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.model.User;
 import com.service.UserService;
-import com.validation.UserValidation;
 
 @Controller
 @RequestMapping("/users")
@@ -45,10 +47,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/add")
-	public String addUser(@ModelAttribute("user") User user, Model model) {
-		UserValidation userValidation = new UserValidation();
-		boolean error = userValidation.validate(user, model);
-		if(error) {
+	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+		if(result.hasErrors()) {
 			model.addAttribute("type", "add");
 			return "users/show_form";
 		}
@@ -65,10 +65,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/update")
-	public String updateUser(@ModelAttribute("user") User user, Model model) {
-		UserValidation userValidation = new UserValidation();
-		boolean error = userValidation.validate(user, model);
-		if(error) {
+	public String updateUser(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+		if(result.hasErrors()) {
 			model.addAttribute("type", "update");
 			return "users/show_form";
 		}

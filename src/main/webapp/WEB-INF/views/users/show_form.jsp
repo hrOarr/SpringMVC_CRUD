@@ -22,17 +22,24 @@
     	 <form:form action="${pageContext.servletContext.contextPath}/users/${type}" method="POST" modelAttribute="user">
     	    
     	    <div class="relative mb-2">
-              <form:input path="name" required="required" placeholder="Enter name" class="py-1 px-3 w-full bg-white rounded border border-gray-300 outline-none "/>
+              <form:input path="name" placeholder="Enter name" class="py-1 px-3 w-full bg-white rounded border border-gray-300 outline-none "/>
             </div>
-            <div class="relative mb-2 text-red-500"><c:out value="${username_error}"/></div>
+            <div class="relative mb-2">
+               <form:errors cssClass="text-red-500" path="name" />
+            </div>
             
             <div class="relative mb-2">
-              <form:input path="email" required="required" placeholder="Enter email" class="py-1 px-3 w-full bg-white rounded border border-gray-300 outline-none "/>
+              <form:input path="email" placeholder="Enter email" class="py-1 px-3 w-full bg-white rounded border border-gray-300 outline-none "/>
             </div>
-            <div class="relative mb-2 text-red-500"><c:out value="${email_error}"/></div>
+            <div class="relative mb-2">
+               <form:errors cssClass="text-red-500" path="email" />
+            </div>
             
             <div class="relative mb-2">
-              <form:input path="country" required="required" placeholder="Enter country" class="py-1 px-3 w-full bg-white rounded border border-gray-300 outline-none "/>
+              <form:input path="country" placeholder="Enter country" class="py-1 px-3 w-full bg-white rounded border border-gray-300 outline-none "/>
+            </div>
+            <div class="relative mb-2">
+               <form:errors cssClass="text-red-500" path="country" />
             </div>
             
             <form:input type="hidden" path="id" />

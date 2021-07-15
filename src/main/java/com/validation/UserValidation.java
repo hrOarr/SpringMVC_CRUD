@@ -15,7 +15,7 @@ public class UserValidation {
 		boolean error = false;
 		
 		// Name validation check
-		String regex = "[a-zA-Z0-9\\._\\-]{1,}";
+		String regex = "^(?=.{1,}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._\\s]*$+(?<![_.])$";
 		if(username.length()<3) {
 			error = true;
 			if(username.matches(regex))model.addAttribute("username_error", "Name is too small");

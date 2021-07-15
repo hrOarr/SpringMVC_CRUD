@@ -1,11 +1,23 @@
 package com.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 public class Article {
+	
 	private int id;
+	
+	@NotEmpty(message = "Title can not be Empty")
+	@Size(min = 5, max = 55, message = "Title must be between 5 and 55 characters")
 	private String title;
+	
+	@NotEmpty(message = "Body can not be Empty")
+	@Size(min = 15, message = "Body is too short")
 	private String body;
+	
 	private String username;
+	@Positive(message = "User is not selected")
 	private int user_id;
 	
 	public Article(String title, String body) {

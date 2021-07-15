@@ -2,6 +2,8 @@ package com.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,6 @@ import com.model.Article;
 import com.model.User;
 import com.service.ArticleService;
 import com.service.UserService;
-import com.validation.ArticleValidation;
 
 @Controller
 @RequestMapping("/articles")
@@ -40,7 +41,6 @@ public class ArticleController {
 	
 	@GetMapping("/{id}")
 	public String showArticle(@PathVariable("id") int id, Model model) {
-		System.out.println("Begin......");
 		try {
 			Article article = articleService.getArticle(id);
 			model.addAttribute("article", article);
@@ -69,10 +69,8 @@ public class ArticleController {
 	}
 	
 	@PostMapping("/add")
-	public String addArticle(@ModelAttribute("article") Article article, BindingResult result, Model model) {
-		ArticleValidation articleValidation = new ArticleValidation();
-		boolean error = articleValidation.validation(article, model);
-		if(error) {
+	public String addArticle(@Valid @ModelAttribute("article") Article article, BindingResult result, Model model) {
+		if(result.hasErrors()) {
 			model.addAttribute("type", "add");
 			return "articles/show_form";
 		}
@@ -95,9 +93,7 @@ public class ArticleController {
 	
 	@PostMapping("/edit")
 	public String editArticle(@ModelAttribute("article") Article article, BindingResult result, Model model) {
-		ArticleValidation articleValidation = new ArticleValidation();
-		boolean error = articleValidation.validation(article, model);
-		if(error) {
+		if(result.hasErrors()) {
 			model.addAttribute("type", "edit");
 			return "articles/show_form";
 		}

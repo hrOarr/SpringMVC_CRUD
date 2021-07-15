@@ -1,9 +1,21 @@
 package com.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class User {
 	private int id;
+	
+	@NotEmpty(message = "Name can not be Empty")
+	@Size(min = 5, max = 55, message = "Name must be between 5 and 55 characters")
 	private String name;
+	
+	@NotEmpty(message = "Email can not be Empty")
+	@Email(message = "Invalid Email")
 	private String email;
+	
+	@NotEmpty(message = "Country can not be Empty")
 	private String country;
 	
 	public User() {}
